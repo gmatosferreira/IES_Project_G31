@@ -10,6 +10,7 @@ import NotFoundView from 'src/views/errors/NotFoundView';
 import ProductListView from 'src/views/product/ProductListView';
 import RegisterView from 'src/views/auth/RegisterView';
 import SettingsView from 'src/views/settings/SettingsView';
+import MyCart from 'src/views/cart/CartListView';
 
 const routes = [
   {
@@ -22,6 +23,13 @@ const routes = [
       { path: 'products', element: <ProductListView /> },
       { path: 'settings', element: <SettingsView /> },
       { path: '*', element: <Navigate to="/404" /> }
+    ]
+  },
+  {
+    path: 'app/client',
+    element: <DashboardLayout />,
+    children:[
+      { path: 'cart', element: <MyCart/> }
     ]
   },
   {

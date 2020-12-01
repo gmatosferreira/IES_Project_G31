@@ -9,7 +9,7 @@ import { Pagination } from '@material-ui/lab';
 import Page from 'src/components/Page';
 import Toolbar from './Toolbar';
 import ProductCard from './ProductCard';
-import data from './data';
+import data from './productList';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -23,9 +23,14 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-const ProductList = () => {
+const MyCart = () => {
   const classes = useStyles();
   const [products] = useState(data);
+  const [total, setTotal] = useState(0)
+
+  function callbackFunction (childData) {
+    this.setTotal(total + 2)
+  }
 
   return (
     <Page
@@ -33,7 +38,7 @@ const ProductList = () => {
       title="Produtos"
     >
       <Container maxWidth={false}>
-        <Toolbar />
+        <Toolbar total={total}/>
         <Box mt={3}>
           <Grid
             container
@@ -43,13 +48,14 @@ const ProductList = () => {
               <Grid
                 item
                 key={product.id}
-                lg={4}
-                md={6}
+                lg={12}
+                md={12}
                 xs={12}
               >
                 <ProductCard
                   className={classes.productCard}
                   product={product}
+                  parentCallback = {callbackFunction}
                 />
               </Grid>
             ))}
@@ -71,4 +77,4 @@ const ProductList = () => {
   );
 };
 
-export default ProductList;
+export default MyCart;
