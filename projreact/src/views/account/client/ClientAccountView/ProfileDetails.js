@@ -13,18 +13,76 @@ import {
   makeStyles
 } from '@material-ui/core';
 
+import ProfileDialog from './ProfileDialog';
+
 const states = [
   {
-    value: 'alabama',
-    label: 'Alabama'
+    label: 'Aveiro',
+    value: 'aveiro'
   },
   {
-    value: 'new-york',
-    label: 'New York'
+    label: 'Beja',
+    value: 'beja'
   },
   {
-    value: 'san-francisco',
-    label: 'San Francisco'
+    label: 'Bragança',
+    value: 'bragança'
+  },
+  {
+    label: 'Castelo Branco',
+    value: 'castelo-branco'
+  },
+  {
+    label: 'Coimbra',
+    value: 'coimbra'
+  },
+  {
+    label: 'Évora',
+    value: 'evora'
+  },
+  {
+    label: 'Faro',
+    value: 'faro'
+  },
+  {
+    label: 'Guarda',
+    value: 'guarda'
+  },
+  {
+    label: 'Leiria',
+    value: 'leiria'
+  },
+  {
+    label: 'Lisboa',
+    value: 'lisboa'
+  },
+  {
+    label: 'Portalegre',
+    value: 'portalegre'
+  },
+  {
+    label: 'Porto',
+    value: 'porto'
+  },
+  {
+    label: 'Santarém',
+    value: 'santarem'
+  },
+  {
+    label: 'Setúbal',
+    value: 'setubal'
+  },
+  {
+    label: 'Viana do Castelo',
+    value: 'viana-castelo'
+  },
+  {
+    label: 'Vila Real',
+    value: 'vila-real'
+  },
+  {
+    label: 'Viseu',
+    value: 'viseu'
   }
 ];
 
@@ -32,16 +90,9 @@ const useStyles = makeStyles(() => ({
   root: {}
 }));
 
-const ProfileDetails = ({ className, ...rest }) => {
+const ProfileDetails = (props, { className, ...rest }) => {
   const classes = useStyles();
-  const [values, setValues] = useState({
-    firstName: 'Katarina',
-    lastName: 'Smith',
-    email: 'demo@devias.io',
-    phone: '',
-    state: 'Alabama',
-    country: 'USA'
-  });
+  const [values, setValues] = useState(props.data);
 
   const handleChange = (event) => {
     setValues({
@@ -57,7 +108,7 @@ const ProfileDetails = ({ className, ...rest }) => {
       className={clsx(classes.root, className)}
       {...rest}
     >
-      <Card>
+      <Card style={{marginBottom: '3rem'}}>
         <CardHeader
           subheader="The information can be edited"
           title="Profile"
@@ -178,12 +229,7 @@ const ProfileDetails = ({ className, ...rest }) => {
           justifyContent="flex-end"
           p={2}
         >
-          <Button
-            color="primary"
-            variant="contained"
-          >
-            Save details
-          </Button>
+          <ProfileDialog />
         </Box>
       </Card>
     </form>

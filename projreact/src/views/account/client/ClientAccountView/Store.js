@@ -14,6 +14,8 @@ import {
   makeStyles
 } from '@material-ui/core';
 
+import StoreIcon from '@material-ui/icons/Store';
+
 const useStyles = makeStyles(() => ({
   root: {},
   avatar: {
@@ -22,7 +24,7 @@ const useStyles = makeStyles(() => ({
   }
 }));
 
-const Profile = (props, { className, ...rest }) => {
+const Store = (props, { className, ...rest }) => {
   const classes = useStyles();
   const [user, setValues] = useState(props.data);
 
@@ -30,7 +32,6 @@ const Profile = (props, { className, ...rest }) => {
     <Card
       className={clsx(classes.root, className)}
       {...rest}
-      style={{marginBottom: '3rem'}}
     >
       <CardContent>
         <Box
@@ -38,29 +39,15 @@ const Profile = (props, { className, ...rest }) => {
           display="flex"
           flexDirection="column"
         >
-          <Avatar
-            className={classes.avatar}
-            src={user.avatar}
+          <StoreIcon 
+            fontSize="large"
           />
           <Typography
             color="textPrimary"
             gutterBottom
             variant="h3"
           >
-            {user.firstName} {user.lastName}
-          </Typography>
-          <Typography
-            color="textSecondary"
-            variant="body1"
-          >
-            {`${user.state},  ${user.country}`}
-          </Typography>
-          <Typography
-            className={classes.dateText}
-            color="textSecondary"
-            variant="body1"
-          >
-            {user.store} Store
+            {user.store}
           </Typography>
         </Box>
       </CardContent>
@@ -71,15 +58,15 @@ const Profile = (props, { className, ...rest }) => {
           fullWidth
           variant="text"
         >
-          Upload picture
+          Change favourite store
         </Button>
       </CardActions>
     </Card>
   );
 };
 
-Profile.propTypes = {
+Store.propTypes = {
   className: PropTypes.string
 };
 
-export default Profile;
+export default Store;
