@@ -53,7 +53,10 @@ const TopBar = ({
               <NotificationsIcon />
             </Badge>
           </IconButton>
-          <IconButton color="inherit">
+          <IconButton 
+          color="inherit"
+          component={RouterLink}
+          to='/register'>
             <InputIcon />
           </IconButton>
         </Hidden>

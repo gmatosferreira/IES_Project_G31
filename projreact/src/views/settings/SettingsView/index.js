@@ -4,6 +4,7 @@ import {
   Container,
   makeStyles
 } from '@material-ui/core';
+import { useLocation } from "react-router-dom";
 import Page from 'src/components/Page';
 import Notifications from './Notifications';
 import Password from './Password';
@@ -19,6 +20,7 @@ const useStyles = makeStyles((theme) => ({
 
 const SettingsView = () => {
   const classes = useStyles();
+  const isClient = useLocation().pathname.includes("/app/client")
 
   return (
     <Page
@@ -26,7 +28,9 @@ const SettingsView = () => {
       title="Settings"
     >
       <Container maxWidth="lg">
-        <Notifications />
+        { !isClient &&
+          <Notifications />
+        }
         <Box mt={3}>
           <Password />
         </Box>
