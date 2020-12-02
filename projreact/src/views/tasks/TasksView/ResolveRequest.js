@@ -16,7 +16,7 @@ import { blue } from '@material-ui/core/colors';
 
 import CheckCircleOutlineIcon from '@material-ui/icons/CheckCircleOutline';
 
-const states = ['Resolved', 'Peding', 'Costumer left'];
+const states = ['Resolved'];
 const useStyles = makeStyles({
     avatar: {
         backgroundColor: blue[100],

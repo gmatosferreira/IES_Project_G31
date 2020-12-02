@@ -69,7 +69,7 @@ const ProfileDetails = ({ persona, className, ...rest }) => {
     >
       <Card>
         <CardHeader
-          subheader={ user.admin? "The information can be edited" : "To change this information, please ask a manager." }
+          subheader="The information can be edited"
           title="Profile"
         />
         <Divider />
@@ -92,7 +92,6 @@ const ProfileDetails = ({ persona, className, ...rest }) => {
                 required
                 value={user.firstName}
                 variant="outlined"
-                disabled={!user.admin}
               />
             </Grid>
             <Grid
@@ -108,7 +107,6 @@ const ProfileDetails = ({ persona, className, ...rest }) => {
                 required
                 value={user.lastName}
                 variant="outlined"
-                disabled={!user.admin}
               />
             </Grid>
             <Grid
@@ -124,44 +122,23 @@ const ProfileDetails = ({ persona, className, ...rest }) => {
                 required
                 value={user.email}
                 variant="outlined"
-                disabled={!user.admin}
-              />
-            </Grid>
-            <Grid
-              item
-              md={6}
-              xs={12}
-            >
-              <TextField
-                fullWidth
-                label="Phone Number"
-                name="phone"
-                onChange={handleChange}
-                type="number"
-                value={user.phone}
-                variant="outlined"
-                disabled={!user.admin}
               />
             </Grid>
           </Grid>
         </CardContent>
-        {user.admin &&
-          <div>
-            <Divider />
-            <Box
-              display="flex"
-              justifyContent="flex-end"
-              p={2}
-            >
-              <Button
-                color="primary"
-                variant="contained"
-              >
-                Save details
+        <Divider />
+        <Box
+          display="flex"
+          justifyContent="flex-end"
+          p={2}
+        >
+          <Button
+            color="primary"
+            variant="contained"
+          >
+            Save details
           </Button>
-            </Box>
-          </div>
-        }
+        </Box>
       </Card>
     </form>
   );
