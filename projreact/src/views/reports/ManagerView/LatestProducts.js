@@ -115,7 +115,7 @@ const LatestProducts = ({ className, ...rest }) => {
           size="small"
           variant="text"
           component={RouterLink}
-          to="/app/products"
+          to="/admin/products"
         >
           View all
         </Button>

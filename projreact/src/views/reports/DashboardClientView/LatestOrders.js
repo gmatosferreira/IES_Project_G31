@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { NavLink as RouterLink } from 'react-router-dom';
 import clsx from 'clsx';
 import moment from 'moment';
 import { v4 as uuid } from 'uuid';
@@ -29,66 +28,60 @@ const data = [
     ref: 'CDD1049',
     amount: 30.5,
     customer: {
-      name: 'Ekaterina Tankova',
-      email: 'ekaterina.tankova@devias.io'
+      name: 'Ekaterina Tankova'
     },
     createdAt: 1555016400000,
-    status: 'in line'
+    status: 'pending'
   },
   {
     id: uuid(),
     ref: 'CDD1048',
     amount: 25.1,
     customer: {
-      name: 'Cao Yu',
-      email: 'cao.yu@devias.io	'
+      name: 'Cao Yu'
     },
     createdAt: 1555016400000,
-    status: 'in line'
+    status: 'delivered'
   },
   {
     id: uuid(),
     ref: 'CDD1047',
     amount: 10.99,
     customer: {
-      name: 'Alexa Richardson',
-      email: 'alexa.richardson@devias.io'
+      name: 'Alexa Richardson'
     },
     createdAt: 1554930000000,
-    status: 'in line'
+    status: 'refunded'
   },
   {
     id: uuid(),
     ref: 'CDD1046',
     amount: 96.43,
     customer: {
-      name: 'Anje Keizer',
-      email: 'anje.keizer@devias.io'
+      name: 'Anje Keizer'
     },
     createdAt: 1554757200000,
-    status: 'inside store'
+    status: 'pending'
   },
   {
     id: uuid(),
     ref: 'CDD1045',
     amount: 32.54,
     customer: {
-      name: 'Clarke Gillebert',
-      email: 'clarke.gillebert@devias.io'
+      name: 'Clarke Gillebert'
     },
     createdAt: 1554670800000,
-    status: 'inside store'
+    status: 'delivered'
   },
   {
     id: uuid(),
     ref: 'CDD1044',
     amount: 16.76,
     customer: {
-      name: 'Adam Denisov',
-      email: 'adam.denisov@devias.io'
+      name: 'Adam Denisov'
     },
     createdAt: 1554670800000,
-    status: 'in line'
+    status: 'delivered'
   }
 ];
 
@@ -108,26 +101,15 @@ const LatestOrders = ({ className, ...rest }) => {
       className={clsx(classes.root, className)}
       {...rest}
     >
-      <CardHeader title="Current Customers" />
+      <CardHeader title="Latest Orders" />
       <Divider />
       <PerfectScrollbar>
         <Box minWidth={800}>
           <Table>
             <TableHead>
               <TableRow>
-
                 <TableCell>
-                  <Tooltip
-                    enterDelay={300}
-                    title="Sort"
-                  >
-                    <TableSortLabel
-                      active
-                      direction="desc"
-                    >
-                      Name
-                    </TableSortLabel>
-                  </Tooltip>
+                  Order Ref
                 </TableCell>
                 <TableCell sortDirection="desc">
                   <Tooltip
@@ -138,12 +120,12 @@ const LatestOrders = ({ className, ...rest }) => {
                       active
                       direction="desc"
                     >
-                      Email
+                      Date
                     </TableSortLabel>
                   </Tooltip>
                 </TableCell>
                 <TableCell>
-                  Status
+                  Total
                 </TableCell>
               </TableRow>
             </TableHead>
@@ -154,17 +136,13 @@ const LatestOrders = ({ className, ...rest }) => {
                   key={order.id}
                 >
                   <TableCell>
-                    {order.customer.name}
+                    {order.ref}
                   </TableCell>
                   <TableCell>
-                    {order.customer.email}
+                    {moment(order.createdAt).format('DD/MM/YYYY')}
                   </TableCell>
                   <TableCell>
-                    <Chip
-                      color="primary"
-                      label={order.status}
-                      size="small"
-                    />
+                  {order.amount}€
                   </TableCell>
                 </TableRow>
               ))}
@@ -182,8 +160,6 @@ const LatestOrders = ({ className, ...rest }) => {
           endIcon={<ArrowRightIcon />}
           size="small"
           variant="text"
-          component={RouterLink}
-          to="/admin/customers/"
         >
           View all
         </Button>
