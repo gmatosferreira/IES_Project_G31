@@ -1,10 +1,10 @@
 import {
-	BarChart as BarChartIcon,
-	Settings as SettingsIcon,
-	ShoppingBag as CustomersInIcon,
-	Package as ShoppingBagIcon,
-	Bell as NotificationsIcon,
-	Users as UsersIcon,
+    BarChart as BarChartIcon,
+    Settings as SettingsIcon,
+    ShoppingBag as CustomersInIcon,
+    Package as ShoppingBagIcon,
+    Bell as NotificationsIcon,
+    Users as UsersIcon,
     DollarSign as LatestOrders,
     Users as Users,
 } from "react-feather";
@@ -33,7 +33,7 @@ const personas = {
             {
                 href: "/admin/orders/",
                 icon: LatestOrders,
-                title: "Latest Orders",
+                title: "Latest Purchases",
             },
             {
                 href: "/admin/products/",
