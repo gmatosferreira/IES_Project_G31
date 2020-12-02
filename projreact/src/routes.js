@@ -4,8 +4,9 @@ import DashboardLayout from "src/layouts/DashboardLayout";
 import MainLayout from "src/layouts/MainLayout";
 import AccountView from "src/views/account/AccountView";
 import CustomerListView from "src/views/customer/CustomerListView";
+import CustomerInListView from "src/views/customer/CustomerInListView";
 import DashboardView from "src/views/reports/DashboardView";
-import DashboardClientView from "src/views/reports/DashboardClientView";
+import NotificationView from "src/views/reports/NotificationView";
 import LoginView from "src/views/auth/LoginView";
 import NotFoundView from "src/views/errors/NotFoundView";
 import ProductListView from "src/views/product/ProductListView";
@@ -14,42 +15,20 @@ import SettingsView from "src/views/settings/SettingsView";
 
 const routes = [
 	{
-		path: "app/client",
-		element: <DashboardLayout />,
-		children: [
-			{ path: "account", element: <AccountView /> },
-			{ path: "/", element: <DashboardClientView /> },
-			{ path: "products", element: <ProductListView /> },
-			{ path: "settings", element: <SettingsView /> },
-			{ path: "*", element: <Navigate to="/404" /> },
-		],
-	},
-
-	{
-		path: "app/admin",
+		path: "admin",
 		element: <DashboardLayout />,
 		children: [
 			{ path: "account", element: <AccountView /> },
 			{ path: "customers", element: <CustomerListView /> },
+			{ path: "customers/in_store", element: <CustomerInListView /> },
 			{ path: "/", element: <DashboardView /> },
 			{ path: "products", element: <ProductListView /> },
 			{ path: "settings", element: <SettingsView /> },
+			{ path: "notifications", element: <NotificationView /> },
 			{ path: "*", element: <Navigate to="/404" /> },
 		],
 	},
 
-	{
-		path: "app/employee",
-		element: <DashboardLayout />,
-		children: [
-			{ path: "account", element: <AccountView /> },
-			{ path: "customers", element: <CustomerListView /> },
-			{ path: "/", element: <DashboardView /> },
-			{ path: "products", element: <ProductListView /> },
-			{ path: "settings", element: <SettingsView /> },
-			{ path: "*", element: <Navigate to="/404" /> },
-		],
-	},
 	{
 		path: "/",
 		element: <MainLayout />,

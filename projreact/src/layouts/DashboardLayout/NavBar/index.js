@@ -14,13 +14,15 @@ import {
 import {
 	BarChart as BarChartIcon,
 	Settings as SettingsIcon,
-	ShoppingBag as ShoppingBagIcon,
-	User as UserIcon,
+	ShoppingBag as CustomersInIcon,
+	Package as ShoppingBagIcon,
+	Bell as NotificationsIcon,
 	Users as UsersIcon,
 } from "react-feather";
 import NavItem from "./NavItem";
+import getInitials from 'src/utils/getInitials';
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles((theme) => ({
 	mobileDrawer: {
 		width: 256,
 	},
@@ -31,40 +33,46 @@ const useStyles = makeStyles(() => ({
 	},
 	avatar: {
 		cursor: "pointer",
+		backgroundColor: theme.palette.primary.main,
 		width: 64,
 		height: 64,
 	},
 }));
-
 const user = {
 	avatar: "/static/images/avatars/avatar_6.png",
-	jobTitle: "Senior Developer",
+	jobTitle: "Administrator",
 	name: "Katarina Smith",
 };
 
-let items = [
+const items = [
 	{
-		href: "/app/dashboard",
+		href: "/admin/",
 		icon: BarChartIcon,
 		title: "Dashboard",
 	},
 	{
-		href: "/app/customers",
+		href: "/admin/customers/",
 		icon: UsersIcon,
 		title: "Customers",
 	},
 	{
-		href: "/app/products",
+		href: "/admin/customers/in_store",
+		icon: CustomersInIcon,
+		title: "Customers in Store",
+	},
+	{
+		href: "/admin/products/",
 		icon: ShoppingBagIcon,
 		title: "Products",
 	},
 	{
-		href: "/app/account",
-		icon: UserIcon,
-		title: "Account",
+		href: "/admin/notifications/",
+		icon: NotificationsIcon,
+		title: "Notifications",
 	},
+
 	{
-		href: "/app/settings",
+		href: "/admin/settings/",
 		icon: SettingsIcon,
 		title: "Settings",
 	},
@@ -73,9 +81,6 @@ let items = [
 const NavBar = ({ onMobileClose, openMobile }) => {
 	const classes = useStyles();
 	const location = useLocation();
-	const isClient = location.pathname.includes("/app/client");
-	const isAdmin = location.pathname.includes("/app/admin");
-	const isEmployee = location.pathname.includes("/app/employee");
 
 	useEffect(() => {
 		if (openMobile && onMobileClose) {
@@ -83,89 +88,6 @@ const NavBar = ({ onMobileClose, openMobile }) => {
 		}
 		// eslint-disable-next-line
 	}, [location.pathname]);
-
-	if (isClient) {
-		items = [
-			{
-				href: "/app/client",
-				icon: BarChartIcon,
-				title: "Dashboard",
-			},
-			{
-				href: "/app/client/products",
-				icon: ShoppingBagIcon,
-				title: "Products",
-			},
-			{
-				href: "/app/client/account",
-				icon: UserIcon,
-				title: "Account",
-			},
-			{
-				href: "/app/client/settings",
-				icon: SettingsIcon,
-				title: "Settings",
-			},
-		];
-		user.jobTitle = "";
-	}
-
-	if (isAdmin) {
-		items = [
-			{
-				href: "/app/admin",
-				icon: BarChartIcon,
-				title: "Dashboard",
-			},
-			{
-				href: "/app/customers",
-				icon: UsersIcon,
-				title: "Customers",
-			},
-			{
-				href: "/app/admin/products",
-				icon: ShoppingBagIcon,
-				title: "Products",
-			},
-			{
-				href: "/app/admin/account",
-				icon: UserIcon,
-				title: "Account",
-			},
-			{
-				href: "/app/admin/settings",
-				icon: SettingsIcon,
-				title: "Settings",
-			},
-		];
-		user.jobTitle = "Administrator";
-	}
-
-	if (isEmployee) {
-		items = [
-			{
-				href: "/app/employee",
-				icon: BarChartIcon,
-				title: "Dashboard",
-			},
-			{
-				href: "/app/employee/products",
-				icon: ShoppingBagIcon,
-				title: "Products",
-			},
-			{
-				href: "/app/employee/account",
-				icon: UserIcon,
-				title: "Account",
-			},
-			{
-				href: "/app/employee/settings",
-				icon: SettingsIcon,
-				title: "Settings",
-			},
-		];
-		user.jobTitle = "Employee";
-	}
 
 	const content = (
 		<Box height="100%" display="flex" flexDirection="column">
@@ -175,10 +97,8 @@ const NavBar = ({ onMobileClose, openMobile }) => {
 				flexDirection="column"
 				p={2}
 			>
-				<Avatar
-					className={classes.avatar}
-					src={user.avatar}
-				/>
+				<Avatar className={classes.avatar}>{getInitials(user.name)}</Avatar>
+
 				<Typography
 					className={classes.name}
 					color="textPrimary"
