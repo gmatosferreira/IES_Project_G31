@@ -98,6 +98,10 @@ const ProductCard = ({ persona, className, product, ...rest }) => {
                 <XCircle className={classes.icon} size="20" />
                 <span className={classes.title}>Delete</span>
               </Button>
+              <Button color={colors.common.yellow} variant="contained">
+                <RefreshCcw className={classes.icon} size="20" />
+                <span className={classes.title}>Restock</span>
+              </Button>
             </Box>
           }
           {

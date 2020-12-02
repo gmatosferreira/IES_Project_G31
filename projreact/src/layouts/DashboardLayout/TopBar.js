@@ -89,7 +89,7 @@ const TopBar = ({
               </Badge>
             </IconButton>
             <IconButton color="inherit">
-              <InputIcon />
+              <InputIcon onClick={() => {window.location.href="/"}} />
             </IconButton>
             <Menu
               id="simple-menu"
