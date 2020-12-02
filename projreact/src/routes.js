@@ -23,7 +23,7 @@ const routes = [
 			{ path: "customers", element: <CustomerListView /> },
 			{ path: "customers/in_store", element: <CustomerInListView /> },
 			{ path: "/", element: <DashboardView /> },
-			{ path: "products", element: <ProductListView /> },
+			{ path: "products", element: <ProductListView persona="admin" /> },
 			{ path: "settings", element: <SettingsView persona="admin" /> },
 			{ path: "notifications", element: <NotificationView /> },
 			{ path: "*", element: <Navigate to="/404" /> },
@@ -34,6 +34,7 @@ const routes = [
 		element: <DashboardLayout persona="employee" />,
 		children: [
 			{ path: "help", element: <TasksView /> },
+			{ path: "products", element: <ProductListView persona="employee" /> },
 			{ path: "settings", element: <SettingsView persona="employee" /> },
 		],
 	},

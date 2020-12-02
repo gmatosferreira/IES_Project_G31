@@ -68,6 +68,11 @@ const personas = {
                 title: "Help Requests",
             },
             {
+                href: "/employee/products/",
+                icon: ShoppingBagIcon,
+                title: "Products",
+            },
+            {
                 href: "/employee/settings/",
                 icon: SettingsIcon,
                 title: "Settings",
