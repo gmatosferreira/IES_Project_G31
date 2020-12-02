@@ -51,13 +51,13 @@ const Notifications = ({ persona, className, ...rest }) => {
 								Notifications
 							</Typography>
 
-							{ persona=="admin" &&
+							{ persona=="employee" &&
 								<FormControlLabel
 									control={<Checkbox defaultChecked />}
 									label="Help needed"
 								/>
 							}
-							{ persona=="employee" &&
+							{ persona=="admin" &&
 								<Grid
 									container="true"
 									direction="column"
