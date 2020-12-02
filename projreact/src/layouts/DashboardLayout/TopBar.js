@@ -20,7 +20,6 @@ import NotificationsIcon from '@material-ui/icons/NotificationsOutlined';
 import AssignmentIcon from '@material-ui/icons/Assignment';
 import ShoppingBasketIcon from '@material-ui/icons/ShoppingBasket';
 import InputIcon from '@material-ui/icons/Input';
-import Logo from 'src/components/Logo';
 
 const useStyles = makeStyles(() => ({
   root: {},
@@ -76,9 +75,9 @@ const TopBar = ({
       {...rest}
     >
       <Toolbar>
-        <RouterLink to="/">
+        {/*<RouterLink to="/">
           <Logo />
-        </RouterLink>
+  </RouterLink>*/}
         <Box flexGrow={1} />
         <Hidden mdDown>
             <IconButton color="inherit" onClick={handleClick}>
