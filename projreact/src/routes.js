@@ -10,7 +10,6 @@ import NotificationView from "src/views/reports/NotificationView";
 import LoginView from "src/views/auth/LoginView";
 import NotFoundView from "src/views/errors/NotFoundView";
 import ProductListView from "src/views/product/ProductListView";
-import RegisterView from "src/views/auth/RegisterView";
 import SettingsView from "src/views/settings/SettingsView";
 import TasksView from "src/views/tasks/TasksView";
 import DashboardEmployeeView from "src/views/reports/DashboardEmployeeView";
@@ -50,7 +49,6 @@ const routes = [
 		element: <MainLayout />,
 		children: [
 			{ path: "login", element: <LoginView /> },
-			{ path: "register", element: <RegisterView /> },
 			{ path: "404", element: <NotFoundView /> },
 			{ path: "/", element: <Navigate to="/login" /> },
 			{ path: "*", element: <Navigate to="/404" /> },
