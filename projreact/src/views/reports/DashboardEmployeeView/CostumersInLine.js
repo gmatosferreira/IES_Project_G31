@@ -32,7 +32,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-const Budget = ({ className, ...rest }) => {
+const CostumersInLine = ({ className, ...rest }) => {
   const classes = useStyles();
 
   return (
@@ -52,47 +52,28 @@ const Budget = ({ className, ...rest }) => {
               gutterBottom
               variant="h6"
             >
-              BUDGET
+              CUSTOMERS IN LINE
             </Typography>
             <Typography
               color="textPrimary"
               variant="h3"
             >
-              $24,000
+              10
             </Typography>
           </Grid>
           <Grid item>
             <Avatar className={classes.avatar}>
-              <MoneyIcon />
+              <MoneyIcon/>
             </Avatar>
           </Grid>
         </Grid>
-        <Box
-          mt={2}
-          display="flex"
-          alignItems="center"
-        >
-          <ArrowDownwardIcon className={classes.differenceIcon} />
-          <Typography
-            className={classes.differenceValue}
-            variant="body2"
-          >
-            12%
-          </Typography>
-          <Typography
-            color="textSecondary"
-            variant="caption"
-          >
-            Since last month
-          </Typography>
-        </Box>
       </CardContent>
     </Card>
   );
 };
 
-Budget.propTypes = {
+CostumersInLine.propTypes = {
   className: PropTypes.string
 };
 
-export default Budget;
+export default CostumersInLine;

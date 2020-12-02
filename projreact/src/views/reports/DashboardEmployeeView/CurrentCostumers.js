@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { NavLink as RouterLink } from 'react-router-dom';
 import clsx from 'clsx';
 import moment from 'moment';
 import { v4 as uuid } from 'uuid';
@@ -28,60 +29,66 @@ const data = [
     ref: 'CDD1049',
     amount: 30.5,
     customer: {
-      name: 'Ekaterina Tankova'
+      name: 'Ekaterina Tankova',
+      email: 'ekaterina.tankova@devias.io'
     },
     createdAt: 1555016400000,
-    status: 'pending'
+    status: 'in line'
   },
   {
     id: uuid(),
     ref: 'CDD1048',
     amount: 25.1,
     customer: {
-      name: 'Cao Yu'
+      name: 'Cao Yu',
+      email: 'cao.yu@devias.io	'
     },
     createdAt: 1555016400000,
-    status: 'delivered'
+    status: 'in line'
   },
   {
     id: uuid(),
     ref: 'CDD1047',
     amount: 10.99,
     customer: {
-      name: 'Alexa Richardson'
+      name: 'Alexa Richardson',
+      email: 'alexa.richardson@devias.io'
     },
     createdAt: 1554930000000,
-    status: 'refunded'
+    status: 'in line'
   },
   {
     id: uuid(),
     ref: 'CDD1046',
     amount: 96.43,
     customer: {
-      name: 'Anje Keizer'
+      name: 'Anje Keizer',
+      email: 'anje.keizer@devias.io'
     },
     createdAt: 1554757200000,
-    status: 'pending'
+    status: 'inside store'
   },
   {
     id: uuid(),
     ref: 'CDD1045',
     amount: 32.54,
     customer: {
-      name: 'Clarke Gillebert'
+      name: 'Clarke Gillebert',
+      email: 'clarke.gillebert@devias.io'
     },
     createdAt: 1554670800000,
-    status: 'delivered'
+    status: 'inside store'
   },
   {
     id: uuid(),
     ref: 'CDD1044',
     amount: 16.76,
     customer: {
-      name: 'Adam Denisov'
+      name: 'Adam Denisov',
+      email: 'adam.denisov@devias.io'
     },
     createdAt: 1554670800000,
-    status: 'delivered'
+    status: 'in line'
   }
 ];
 
@@ -101,18 +108,26 @@ const LatestOrders = ({ className, ...rest }) => {
       className={clsx(classes.root, className)}
       {...rest}
     >
-      <CardHeader title="Latest Orders" />
+      <CardHeader title="Current Customers" />
       <Divider />
       <PerfectScrollbar>
         <Box minWidth={800}>
           <Table>
             <TableHead>
               <TableRow>
+
                 <TableCell>
-                  Order Ref
-                </TableCell>
-                <TableCell>
-                  Customer
+                  <Tooltip
+                    enterDelay={300}
+                    title="Sort"
+                  >
+                    <TableSortLabel
+                      active
+                      direction="desc"
+                    >
+                      Name
+                    </TableSortLabel>
+                  </Tooltip>
                 </TableCell>
                 <TableCell sortDirection="desc">
                   <Tooltip
@@ -123,7 +138,7 @@ const LatestOrders = ({ className, ...rest }) => {
                       active
                       direction="desc"
                     >
-                      Date
+                      Email
                     </TableSortLabel>
                   </Tooltip>
                 </TableCell>
@@ -139,13 +154,10 @@ const LatestOrders = ({ className, ...rest }) => {
                   key={order.id}
                 >
                   <TableCell>
-                    {order.ref}
-                  </TableCell>
-                  <TableCell>
                     {order.customer.name}
                   </TableCell>
                   <TableCell>
-                    {moment(order.createdAt).format('DD/MM/YYYY')}
+                    {order.customer.email}
                   </TableCell>
                   <TableCell>
                     <Chip
@@ -170,6 +182,8 @@ const LatestOrders = ({ className, ...rest }) => {
           endIcon={<ArrowRightIcon />}
           size="small"
           variant="text"
+          component={RouterLink}
+          to="/admin/customers/"
         >
           View all
         </Button>

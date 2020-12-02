@@ -23,7 +23,7 @@ const useStyles = makeStyles(() => ({
   }
 }));
 
-const TrafficByDevice = ({ className, ...rest }) => {
+const SalesByType = ({ className, ...rest }) => {
   const classes = useStyles();
   const theme = useTheme();
 
@@ -41,7 +41,7 @@ const TrafficByDevice = ({ className, ...rest }) => {
         hoverBorderColor: colors.common.white
       }
     ],
-    labels: ['Desktop', 'Tablet', 'Mobile']
+    labels: ['Dairy', 'Technology', 'Vegetables']
   };
 
   const options = {
@@ -68,21 +68,18 @@ const TrafficByDevice = ({ className, ...rest }) => {
 
   const devices = [
     {
-      title: 'Desktop',
+      title: 'Drinks',
       value: 63,
-      icon: LaptopMacIcon,
       color: colors.indigo[500]
     },
     {
-      title: 'Tablet',
+      title: 'Technology',
       value: 15,
-      icon: TabletIcon,
       color: colors.red[600]
     },
     {
-      title: 'Mobile',
+      title: 'Dairy',
       value: 23,
-      icon: PhoneIcon,
       color: colors.orange[600]
     }
   ];
@@ -92,7 +89,7 @@ const TrafficByDevice = ({ className, ...rest }) => {
       className={clsx(classes.root, className)}
       {...rest}
     >
-      <CardHeader title="Traffic by Device" />
+      <CardHeader title="Sales by Product Type" />
       <Divider />
       <CardContent>
         <Box
@@ -111,7 +108,6 @@ const TrafficByDevice = ({ className, ...rest }) => {
         >
           {devices.map(({
             color,
-            icon: Icon,
             title,
             value
           }) => (
@@ -120,7 +116,6 @@ const TrafficByDevice = ({ className, ...rest }) => {
               p={1}
               textAlign="center"
             >
-              <Icon color="action" />
               <Typography
                 color="textPrimary"
                 variant="body1"
@@ -142,8 +137,8 @@ const TrafficByDevice = ({ className, ...rest }) => {
   );
 };
 
-TrafficByDevice.propTypes = {
+SalesByType.propTypes = {
   className: PropTypes.string
 };
 
-export default TrafficByDevice;
+export default SalesByType;

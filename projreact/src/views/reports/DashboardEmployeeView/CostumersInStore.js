@@ -12,7 +12,8 @@ import {
   makeStyles,
   colors
 } from '@material-ui/core';
-import InsertChartIcon from '@material-ui/icons/InsertChartOutlined';
+import PeopleIcon from '@material-ui/icons/PeopleOutlined';
+
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -25,7 +26,7 @@ const useStyles = makeStyles(() => ({
   }
 }));
 
-const TasksProgress = ({ className, ...rest }) => {
+const CostumersInStore = ({ className, ...rest }) => {
   const classes = useStyles();
 
   return (
@@ -45,34 +46,28 @@ const TasksProgress = ({ className, ...rest }) => {
               gutterBottom
               variant="h6"
             >
-              TASKS PROGRESS
+              CUSTOMERS IN STORE
             </Typography>
             <Typography
               color="textPrimary"
               variant="h3"
             >
-              75.5%
+              600
             </Typography>
           </Grid>
           <Grid item>
             <Avatar className={classes.avatar}>
-              <InsertChartIcon />
+              <PeopleIcon />
             </Avatar>
           </Grid>
         </Grid>
-        <Box mt={3}>
-          <LinearProgress
-            value={75.5}
-            variant="determinate"
-          />
-        </Box>
       </CardContent>
     </Card>
   );
 };
 
-TasksProgress.propTypes = {
+CostumersInStore.propTypes = {
   className: PropTypes.string
 };
 
-export default TasksProgress;
+export default CostumersInStore;
