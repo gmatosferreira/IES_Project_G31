@@ -14,6 +14,9 @@ import RegisterView from "src/views/auth/RegisterView";
 import SettingsView from "src/views/settings/SettingsView";
 import TasksView from "src/views/tasks/TasksView";
 import DashboardEmployeeView from "src/views/reports/DashboardEmployeeView";
+import ShoppingHistoricView from 'src/views/shopping/ShoppingHistoricView';
+import ManagerView from 'src/views/reports/ManagerView'
+
 
 const routes = [
 	{
