@@ -14,20 +14,20 @@ const useStyles = makeStyles((theme) => ({
 	},
 }));
 
-const SettingsView = () => {
+const SettingsView = (props) => {
 	const classes = useStyles();
 
 	return (
 		<Page className={classes.root} title="Settings">
 			<Container maxWidth="lg">
 				<Box mt={3}>
-					<ProfileDetails />
+					<ProfileDetails persona={props.persona} />
 				</Box>
 				<Box mt={3}>
 					<Password />
 				</Box>
 				<Box mt={3}>
-					<Notifications />
+					<Notifications persona={props.persona} />
 				</Box>
 			</Container>
 		</Page>

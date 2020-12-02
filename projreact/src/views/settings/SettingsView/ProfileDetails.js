@@ -32,14 +32,26 @@ const useStyles = makeStyles(() => ({
   root: {}
 }));
 
-const ProfileDetails = ({ className, ...rest }) => {
+const ProfileDetails = ({ persona, className, ...rest }) => {
   const classes = useStyles();
   const [values, setValues] = useState({
-    firstName: 'Amélia',
-    lastName: 'Rodrigues',
-    email: 'amelia.rodrigues@gostore.com',
-    phone: '965235687',
+    'admin': {
+      firstName: 'Amélia',
+      lastName: 'Rodrigues',
+      email: 'amelia.rodrigues@gostore.com',
+      phone: '965235687',
+      admin: true,
+    },
+    'employee': {
+      firstName: 'Pedro',
+      lastName: 'Paulo',
+      email: 'pedro.paulo@gostore.com',
+      phone: '923658965',
+      admin: false,
+    }
   });
+
+  const user = values[persona];
 
   const handleChange = (event) => {
     setValues({
@@ -57,7 +69,7 @@ const ProfileDetails = ({ className, ...rest }) => {
     >
       <Card>
         <CardHeader
-          subheader="The information can be edited"
+          subheader={ user.admin? "The information can be edited" : "To change this information, please ask a manager." }
           title="Profile"
         />
         <Divider />
@@ -78,8 +90,9 @@ const ProfileDetails = ({ className, ...rest }) => {
                 name="firstName"
                 onChange={handleChange}
                 required
-                value={values.firstName}
+                value={user.firstName}
                 variant="outlined"
+                disabled={!user.admin}
               />
             </Grid>
             <Grid
@@ -93,8 +106,9 @@ const ProfileDetails = ({ className, ...rest }) => {
                 name="lastName"
                 onChange={handleChange}
                 required
-                value={values.lastName}
+                value={user.lastName}
                 variant="outlined"
+                disabled={!user.admin}
               />
             </Grid>
             <Grid
@@ -108,8 +122,9 @@ const ProfileDetails = ({ className, ...rest }) => {
                 name="email"
                 onChange={handleChange}
                 required
-                value={values.email}
+                value={user.email}
                 variant="outlined"
+                disabled={!user.admin}
               />
             </Grid>
             <Grid
@@ -123,25 +138,30 @@ const ProfileDetails = ({ className, ...rest }) => {
                 name="phone"
                 onChange={handleChange}
                 type="number"
-                value={values.phone}
+                value={user.phone}
                 variant="outlined"
+                disabled={!user.admin}
               />
             </Grid>
           </Grid>
         </CardContent>
-        <Divider />
-        <Box
-          display="flex"
-          justifyContent="flex-end"
-          p={2}
-        >
-          <Button
-            color="primary"
-            variant="contained"
-          >
-            Save details
+        {user.admin &&
+          <div>
+            <Divider />
+            <Box
+              display="flex"
+              justifyContent="flex-end"
+              p={2}
+            >
+              <Button
+                color="primary"
+                variant="contained"
+              >
+                Save details
           </Button>
-        </Box>
+            </Box>
+          </div>
+        }
       </Card>
     </form>
   );
