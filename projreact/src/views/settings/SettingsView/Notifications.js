@@ -54,10 +54,12 @@ const Notifications = ({ className, ...rest }) => {
 								control={<Checkbox defaultChecked />}
 								label="Store is full"
 							/>
+              {/* 
 							<FormControlLabel
 								control={<Checkbox defaultChecked />}
 								label="Help needed"
-							/>
+              />
+              */}
 							<FormControlLabel
 								control={<Checkbox defaultChecked />}
 								label="Low stock"

@@ -39,7 +39,7 @@ const useStyles = makeStyles((theme) => ({
 	},
 }));
 
-const CustomerCard = ({ className, customer, ...rest }) => {
+const CustomerCard = ({ className, customer, onnclick, ...rest }) => {
 	const classes = useStyles();
 
 	return (
@@ -67,7 +67,7 @@ const CustomerCard = ({ className, customer, ...rest }) => {
 					</Typography>
 				</Box>
 				<Grid container justify="center">
-					<Button color={colors.common.white} variant="contained">
+					<Button color={colors.common.white} variant="contained" onClick={onnclick}>
 						<ShoppingCart className={classes.icon} size="20" />
 						<span className={classes.title}>See Shopping Cart</span>
 					</Button>

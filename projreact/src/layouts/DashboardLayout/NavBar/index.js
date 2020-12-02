@@ -18,9 +18,10 @@ import {
 	Package as ShoppingBagIcon,
 	Bell as NotificationsIcon,
 	Users as UsersIcon,
+	DollarSign as LatestOrders,
 } from "react-feather";
 import NavItem from "./NavItem";
-import getInitials from 'src/utils/getInitials';
+import getInitials from "src/utils/getInitials";
 
 const useStyles = makeStyles((theme) => ({
 	mobileDrawer: {
@@ -61,6 +62,11 @@ const items = [
 		title: "Customers in Store",
 	},
 	{
+		href: "/admin/orders/",
+		icon: LatestOrders,
+		title: "Latest Orders",
+	},
+	{
 		href: "/admin/products/",
 		icon: ShoppingBagIcon,
 		title: "Products",
@@ -70,7 +76,6 @@ const items = [
 		icon: NotificationsIcon,
 		title: "Notifications",
 	},
-
 	{
 		href: "/admin/settings/",
 		icon: SettingsIcon,
@@ -97,7 +102,9 @@ const NavBar = ({ onMobileClose, openMobile }) => {
 				flexDirection="column"
 				p={2}
 			>
-				<Avatar className={classes.avatar}>{getInitials(user.name)}</Avatar>
+				<Avatar className={classes.avatar}>
+					{getInitials(user.name)}
+				</Avatar>
 
 				<Typography
 					className={classes.name}
