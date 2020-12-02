@@ -58,7 +58,7 @@ const Results = ({ className, customers, ...rest }) => {
 								<TableCell>NIF</TableCell>
 								<TableCell>Email</TableCell>
 								<TableCell>Last Visit</TableCell>
-								<TableCell>Last Orders</TableCell>
+								<TableCell>Latest Purchases</TableCell>
 							</TableRow>
 						</TableHead>
 						<TableBody>
@@ -84,7 +84,7 @@ const Results = ({ className, customers, ...rest }) => {
 											to='/admin/orders'
 										>
                       <DollarSign className={classes.icon} size="20" />
-						<span className={classes.title}>Orders</span>
+						<span className={classes.title}>Purchases</span>
                     </Button>
 									</TableCell>
 								</TableRow>

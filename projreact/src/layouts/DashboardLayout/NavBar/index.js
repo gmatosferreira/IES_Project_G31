@@ -64,7 +64,7 @@ const items = [
 	{
 		href: "/admin/orders/",
 		icon: LatestOrders,
-		title: "Latest Orders",
+		title: "Latest Purchases",
 	},
 	{
 		href: "/admin/products/",
