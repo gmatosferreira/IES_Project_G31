@@ -52,7 +52,7 @@ const CostumersInStore = ({ className, ...rest }) => {
               color="textPrimary"
               variant="h3"
             >
-              300
+              600
             </Typography>
           </Grid>
           <Grid item>

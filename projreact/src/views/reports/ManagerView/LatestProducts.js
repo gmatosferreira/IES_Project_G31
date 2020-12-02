@@ -25,31 +25,31 @@ const data = [
     id: uuid(),
     name: 'Horizon Organic 1 % Low Fat Milk',
     imageUrl: 'https://images-na.ssl-images-amazon.com/images/I/81hRExAE9OL._SX679_PIbundle-18,TopRight,0,0_SX679SY385SH20_.jpg',
-    updatedAt: moment().subtract(2, 'hours')
+    updatedAt: moment().subtract(2, 'minutes')
   },
   {
     id: uuid(),
     name: 'Silk Unsweetened Organic Soymilk',
     imageUrl: 'https://images-na.ssl-images-amazon.com/images/I/91GOVhS2uVL._SX679_.jpg',
-    updatedAt: moment().subtract(2, 'hours')
+    updatedAt: moment().subtract(2, 'minutes')
   },
   {
     id: uuid(),
     name: 'Panasonic LUMIX FZ80 4K Digital Camera',
     imageUrl: 'https://images-na.ssl-images-amazon.com/images/I/917LEZ%2Bit3L._AC_SX679_.jpg',
-    updatedAt: moment().subtract(3, 'hours')
+    updatedAt: moment().subtract(3, 'minutes')
   },
   {
     id: uuid(),
     name: 'Monster Energy Zero Ultra, Sugar Free Energy Drink',
     imageUrl: 'https://m.media-amazon.com/images/I/913KMH1cDKL._AC_UL320_.jpg',
-    updatedAt: moment().subtract(5, 'hours')
+    updatedAt: moment().subtract(5, 'minutes')
   },
   {
     id: uuid(),
     name: 'Reign Total Body Fuel, Sour Apple, Fitness & Performance',
     imageUrl: 'https://m.media-amazon.com/images/I/81xADoTxjFL._AC_UL320_.jpg',
-    updatedAt: moment().subtract(9, 'hours')
+    updatedAt: moment().subtract(9, 'minutes')
   }
 ];
 
@@ -92,7 +92,7 @@ const LatestProducts = ({ className, ...rest }) => {
             </ListItemAvatar>
             <ListItemText
               primary={product.name}
-              secondary={`Updated ${product.updatedAt.fromNow()}`}
+              secondary={`Bought ${product.updatedAt.fromNow()}`}
             />
             <IconButton
               edge="end"
