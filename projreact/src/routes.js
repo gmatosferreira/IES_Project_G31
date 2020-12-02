@@ -16,7 +16,7 @@ import SettingsView from "src/views/settings/SettingsView";
 const routes = [
 	{
 		path: "admin",
-		element: <DashboardLayout />,
+		element: <DashboardLayout persona="admin" />,
 		children: [
 			{ path: "account", element: <AccountView /> },
 			{ path: "customers", element: <CustomerListView /> },
@@ -26,6 +26,12 @@ const routes = [
 			{ path: "settings", element: <SettingsView /> },
 			{ path: "notifications", element: <NotificationView /> },
 			{ path: "*", element: <Navigate to="/404" /> },
+		],
+	},
+	{
+		path: "employee",
+		element: <DashboardLayout persona="employee" />,
+		children: [
 		],
 	},
 
