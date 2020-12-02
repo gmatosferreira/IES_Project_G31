@@ -35,10 +35,10 @@ const useStyles = makeStyles(() => ({
 const ProfileDetails = ({ className, ...rest }) => {
   const classes = useStyles();
   const [values, setValues] = useState({
-    firstName: 'Amélia',
-    lastName: 'Rodrigues',
-    email: 'amelia.rodrigues@gostore.com',
-    phone: '965235687',
+    firstName: 'Pedro',
+    lastName: 'Paulo',
+    email: 'pedro.paulo@gostore.com',
+    phone: '923658965',
   });
 
   const handleChange = (event) => {
@@ -57,7 +57,7 @@ const ProfileDetails = ({ className, ...rest }) => {
     >
       <Card>
         <CardHeader
-          subheader="The information can be edited"
+          subheader="To change this information, please ask a manager."
           title="Profile"
         />
         <Divider />
@@ -80,6 +80,7 @@ const ProfileDetails = ({ className, ...rest }) => {
                 required
                 value={values.firstName}
                 variant="outlined"
+                disabled="true"
               />
             </Grid>
             <Grid
@@ -95,6 +96,7 @@ const ProfileDetails = ({ className, ...rest }) => {
                 required
                 value={values.lastName}
                 variant="outlined"
+                disabled="true"
               />
             </Grid>
             <Grid
@@ -110,6 +112,7 @@ const ProfileDetails = ({ className, ...rest }) => {
                 required
                 value={values.email}
                 variant="outlined"
+                disabled="true"
               />
             </Grid>
             <Grid
@@ -125,23 +128,11 @@ const ProfileDetails = ({ className, ...rest }) => {
                 type="number"
                 value={values.phone}
                 variant="outlined"
+                disabled="true"
               />
             </Grid>
           </Grid>
         </CardContent>
-        <Divider />
-        <Box
-          display="flex"
-          justifyContent="flex-end"
-          p={2}
-        >
-          <Button
-            color="primary"
-            variant="contained"
-          >
-            Save details
-          </Button>
-        </Box>
       </Card>
     </form>
   );

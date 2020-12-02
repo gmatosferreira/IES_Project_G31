@@ -60,7 +60,12 @@ const personas = {
                 href: "/employee/",
                 icon: BarChartIcon,
                 title: "Dashboard",
-            }
+            },
+            {
+                href: "/employee/settings/",
+                icon: SettingsIcon,
+                title: "Settings",
+            },
         ]
     },
 };

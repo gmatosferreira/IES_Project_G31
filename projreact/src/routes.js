@@ -13,6 +13,8 @@ import ProductListView from "src/views/product/ProductListView";
 import RegisterView from "src/views/auth/RegisterView";
 import SettingsView from "src/views/settings/SettingsView";
 
+import SettingsViewEmployee from "src/views/settings/SettingsViewEmployee";
+
 const routes = [
 	{
 		path: "admin",
@@ -32,6 +34,7 @@ const routes = [
 		path: "employee",
 		element: <DashboardLayout persona="employee" />,
 		children: [
+			{ path: "settings", element: <SettingsViewEmployee /> },
 		],
 	},
 
