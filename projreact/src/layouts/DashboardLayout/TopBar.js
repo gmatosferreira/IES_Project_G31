@@ -39,9 +39,9 @@ const TopBar = ({
       {...rest}
     >
       <Toolbar>
-        <RouterLink to="/">
+        {/*<RouterLink to="/">
           <Logo />
-        </RouterLink>
+  </RouterLink>*/}
         <Box flexGrow={1} />
         <Hidden mdDown>
           <IconButton color="inherit">
@@ -56,7 +56,7 @@ const TopBar = ({
           <IconButton 
           color="inherit"
           component={RouterLink}
-          to='/register'>
+          to='/login'>
             <InputIcon />
           </IconButton>
         </Hidden>

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import data from 'src/views/product/ProductListView/data';
+import { NavLink as RouterLink } from 'react-router-dom';
 import {
   Box,
   Button,
@@ -31,7 +32,6 @@ const useStyles = makeStyles(({
 
 const LatestProducts = ({ className, ...rest }) => {
   const classes = useStyles();
-  console.log(data)
   const [products] = useState(data);
 
   return (
@@ -45,7 +45,7 @@ const LatestProducts = ({ className, ...rest }) => {
       />
       <Divider />
       <List>
-        {products.map((product, i) => (
+        {products.slice(0,5).map((product, i) => (
           <ListItem
             divider={i < products.length - 1}
             key={product.id}
@@ -61,12 +61,13 @@ const LatestProducts = ({ className, ...rest }) => {
               primary={product.title}
               secondary={`${product.stock} in stock`}
             />
-            <IconButton
+            {/*<IconButton
               edge="end"
               size="small"
+
             >
               <MoreVertIcon />
-            </IconButton>
+            </IconButton>*/}
           </ListItem>
         ))}
       </List>
@@ -81,6 +82,8 @@ const LatestProducts = ({ className, ...rest }) => {
           endIcon={<ArrowRightIcon />}
           size="small"
           variant="text"
+          component={RouterLink}
+          to='/app/client/products'
         >
           View all
         </Button>

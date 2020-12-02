@@ -37,7 +37,7 @@ const ProfileDetails = ({ className, ...rest }) => {
   const [values, setValues] = useState({
     firstName: 'Katarina',
     lastName: 'Smith',
-    email: 'demo@devias.io',
+    email: 'demo@storego.pt',
     phone: '',
     state: 'Alabama',
     country: 'USA'
