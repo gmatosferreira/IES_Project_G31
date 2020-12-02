@@ -16,7 +16,7 @@ import {
 import {
   Edit,
   XCircle,
-  RefreshCcw
+  RefreshCcw 
 } from "react-feather";
 
 const useStyles = makeStyles((theme) => ({
@@ -37,8 +37,8 @@ const useStyles = makeStyles((theme) => ({
   title: {
     marginRight: 'auto'
   },
-  description: {
-    height: '100px',
+  description:{
+    height:'100px',
     overflow: 'hidden',
   }
 }));
@@ -81,32 +81,22 @@ const ProductCard = ({ persona, className, product, ...rest }) => {
         </Typography>
         <br></br>
         <Box
-          display="flex"
-          justifyContent="space-around"
-          mb={1}>
-          {
-            persona == "admin" &&
-            <Box
-              display="flex"
-              justifyContent="space-around"
-              mb={1}>
-              <Button color={colors.common.yellow} variant="contained">
-                <Edit className={classes.icon} size="20" />
-                <span className={classes.title}>Edit</span>
-              </Button>
-              <Button color={colors.common.red} variant="contained">
-                <XCircle className={classes.icon} size="20" />
-                <span className={classes.title}>Delete</span>
-              </Button>
-            </Box>
-          }
-          {
-            persona == "employee" &&
-            <Button color={colors.common.yellow} variant="contained">
-              <RefreshCcw className={classes.icon} size="20" />
-              <span className={classes.title}>Restock</span>
-            </Button>
-          }
+        display="flex"
+        justifyContent="space-around"
+        mb={1}>
+          <Button color={colors.common.yellow} variant="contained">
+						<Edit className={classes.icon}  size="20" />
+						<span className={classes.title}>Edit</span>
+					</Button>
+          <Button color={colors.common.yellow} variant="contained">
+						<RefreshCcw className={classes.icon}  size="20" />
+						<span className={classes.title}>Restock</span>
+					</Button>
+          <Button color={colors.common.red} variant="contained">
+						<XCircle className={classes.icon} size="20" />
+						<span className={classes.title}>Delete</span>
+					</Button>
+
         </Box>
       </CardContent>
       <Box flexGrow={1} />
