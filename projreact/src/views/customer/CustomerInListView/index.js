@@ -4,14 +4,16 @@ import { Pagination } from "@material-ui/lab";
 import Page from "src/components/Page";
 import Toolbar from "./Toolbar";
 import CustomerCard from "./CustomerCard";
-import { withStyles } from '@material-ui/core/styles';
+import { withStyles } from "@material-ui/core/styles";
 import data from "./data";
-import Button from '@material-ui/core/Button';
-import Dialog from '@material-ui/core/Dialog';
-import MuiDialogContent from '@material-ui/core/DialogContent';
-import MuiDialogActions from '@material-ui/core/DialogActions';
-import Typography from '@material-ui/core/Typography';
-import PerfectScrollbar from 'react-perfect-scrollbar';
+import prodData from "./productList";
+import ProductCard from "./ProductCard";
+import Button from "@material-ui/core/Button";
+import Dialog from "@material-ui/core/Dialog";
+import MuiDialogContent from "@material-ui/core/DialogContent";
+import MuiDialogActions from "@material-ui/core/DialogActions";
+import Typography from "@material-ui/core/Typography";
+import PerfectScrollbar from "react-perfect-scrollbar";
 
 const useStyles = makeStyles((theme) => ({
 	root: {
@@ -33,8 +35,8 @@ const useStyles = makeStyles((theme) => ({
 
 const DialogContent = withStyles((theme) => ({
 	root: {
-		maxHeight: '1000px',
-		padding: theme.spacing(2),
+		maxHeight: "1000px",
+		paddingBottom: theme.spacing(2),
 	},
 }))(MuiDialogContent);
 
@@ -48,11 +50,13 @@ const DialogActions = withStyles((theme) => ({
 const CustomerList = () => {
 	const classes = useStyles();
 	const [customers] = useState(data);
+	const [products] = useState(prodData);
 	const itemsPerPage = 12;
 	const [page, setPage] = React.useState(1);
 	const [noOfPages] = React.useState(
 		Math.ceil(customers.length / itemsPerPage)
 	);
+	const [total, setTotal] = useState(0)
 
 	const handleChange = (event, value) => {
 		setPage(value);
@@ -113,44 +117,34 @@ const CustomerList = () => {
 				aria-labelledby="customized-dialog-title"
 				open={open}
 			>
-	
 				<DialogContent dividers>
-				<PerfectScrollbar>
-					<Typography gutterBottom>
-						Cras mattis consectetur purus sit amet fermentum. Cras
-						justo odio, dapibus ac facilisis in, egestas eget quam.
-						Morbi leo risus, porta ac consectetur ac, vestibulum at
-						eros.
-					</Typography>
-					<Typography gutterBottom>
-						Praesent commodo cursus magna, vel scelerisque nisl
-						consectetur et. Vivamus sagittis lacus vel augue laoreet
-						rutrum faucibus dolor auctor.
-					</Typography>
-					<Typography gutterBottom>
-						Aenean lacinia bibendum nulla sed consectetur. Praesent
-						commodo cursus magna, vel scelerisque nisl consectetur
-						et. Donec sed odio dui. Donec ullamcorper nulla non
-						metus auctor fringilla.
-					</Typography>
-					<Box>
-					<Typography gutterBottom>
-						Aenean lacinia bibendum nulla sed consectetur. Praesent
-						commodo cursus magna, vel scelerisque nisl consectetur
-						et. Donec sed odio dui. Donec ullamcorper nulla non
-						metus auctor fringilla.
-						commodo cursus magna, vel scelerisque nisl consectetur
-						et. Donec sed odio dui. Donec ullamcorper nulla non
-						metus auctor fringilla.
-						commodo cursus magna, vel scelerisque nisl consectetur
-						et. Donec sed odio dui. Donec ullamcorper nulla non
-						metus auctor fringilla.
-						commodo cursus magna, vel scelerisque nisl consectetur
-						et. Donec sed odio dui. Donec ullamcorper nulla non
-						metus auctor fringilla.
-					</Typography>
-					</Box>
-					</PerfectScrollbar>	
+						<Box>
+							<Typography
+								variant="h1"
+								style={{ letterSpacing: "1px" }}
+							>
+								Cart
+							</Typography>
+						</Box>
+						<Box mt={3}>
+							<Grid container spacing={3}>
+								{products.map((product) => (
+									<Grid
+										item
+										key={product.id}
+										lg={12}
+										md={12}
+										xs={12}
+									>
+										<ProductCard
+											className={classes.productCard}
+											product={product}
+								
+										/>
+									</Grid>
+								))}
+							</Grid>
+						</Box>
 				</DialogContent>
 				<DialogActions>
 					<Button autoFocus onClick={handleClose} color="primary">
