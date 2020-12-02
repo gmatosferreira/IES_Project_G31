@@ -12,6 +12,7 @@ import NotFoundView from "src/views/errors/NotFoundView";
 import ProductListView from "src/views/product/ProductListView";
 import RegisterView from "src/views/auth/RegisterView";
 import SettingsView from "src/views/settings/SettingsView";
+import TasksView from "src/views/tasks/TasksView";
 
 const routes = [
 	{
@@ -32,6 +33,7 @@ const routes = [
 		path: "employee",
 		element: <DashboardLayout persona="employee" />,
 		children: [
+			{ path: "help", element: <TasksView /> },
 			{ path: "settings", element: <SettingsView persona="employee" /> },
 		],
 	},

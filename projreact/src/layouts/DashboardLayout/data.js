@@ -5,7 +5,8 @@ import {
 	Package as ShoppingBagIcon,
 	Bell as NotificationsIcon,
 	Users as UsersIcon,
-	DollarSign as LatestOrders,
+    DollarSign as LatestOrders,
+    Users as Users,
 } from "react-feather";
 
 const personas = {
@@ -60,6 +61,11 @@ const personas = {
                 href: "/employee/",
                 icon: BarChartIcon,
                 title: "Dashboard",
+            },
+            {
+                href: "/employee/help",
+                icon: Users,
+                title: "Help Requests",
             },
             {
                 href: "/employee/settings/",
