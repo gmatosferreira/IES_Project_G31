@@ -10,7 +10,7 @@ import {
   makeStyles,
   colors
 } from '@material-ui/core';
-import AttachMoneyIcon from '@material-ui/icons/AttachMoney';
+import PeopleOutlineIcon from '@material-ui/icons/PeopleOutline';
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -23,7 +23,7 @@ const useStyles = makeStyles(() => ({
   }
 }));
 
-const TotalProfit = ({ className, ...rest }) => {
+const RequestsAttended = ({ className, ...rest }) => {
   const classes = useStyles();
 
   return (
@@ -43,18 +43,18 @@ const TotalProfit = ({ className, ...rest }) => {
               gutterBottom
               variant="h6"
             >
-              MONTHLY PROFIT
+              REQUESTS ATTENDED TODAY
             </Typography>
             <Typography
               color="textPrimary"
               variant="h3"
             >
-              23,200€
+              37
             </Typography>
           </Grid>
           <Grid item>
             <Avatar className={classes.avatar}>
-              <AttachMoneyIcon />
+              <PeopleOutlineIcon />
             </Avatar>
           </Grid>
         </Grid>
@@ -63,8 +63,8 @@ const TotalProfit = ({ className, ...rest }) => {
   );
 };
 
-TotalProfit.propTypes = {
+RequestsAttended.propTypes = {
   className: PropTypes.string
 };
 
-export default TotalProfit;
+export default RequestsAttended;

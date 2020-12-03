@@ -23,74 +23,7 @@ import {
 } from '@material-ui/core';
 import ArrowRightIcon from '@material-ui/icons/ArrowRight';
 
-const data = [
-  {
-    id: uuid(),
-    ref: 'CDD1049',
-    amount: 30.5,
-    customer: {
-      name: 'Ekaterina Tankova',
-      email: 'ekaterina.tankova@devias.io'
-    },
-    createdAt: 1555016400000,
-    status: 'in line'
-  },
-  {
-    id: uuid(),
-    ref: 'CDD1048',
-    amount: 25.1,
-    customer: {
-      name: 'Cao Yu',
-      email: 'cao.yu@devias.io	'
-    },
-    createdAt: 1555016400000,
-    status: 'in line'
-  },
-  {
-    id: uuid(),
-    ref: 'CDD1047',
-    amount: 10.99,
-    customer: {
-      name: 'Alexa Richardson',
-      email: 'alexa.richardson@devias.io'
-    },
-    createdAt: 1554930000000,
-    status: 'in line'
-  },
-  {
-    id: uuid(),
-    ref: 'CDD1046',
-    amount: 96.43,
-    customer: {
-      name: 'Anje Keizer',
-      email: 'anje.keizer@devias.io'
-    },
-    createdAt: 1554757200000,
-    status: 'inside store'
-  },
-  {
-    id: uuid(),
-    ref: 'CDD1045',
-    amount: 32.54,
-    customer: {
-      name: 'Clarke Gillebert',
-      email: 'clarke.gillebert@devias.io'
-    },
-    createdAt: 1554670800000,
-    status: 'inside store'
-  },
-  {
-    id: uuid(),
-    ref: 'CDD1044',
-    amount: 16.76,
-    customer: {
-      name: 'Adam Denisov',
-      email: 'adam.denisov@devias.io'
-    },
-    createdAt: 1554670800000,
-    status: 'in line'
-  }
-];
+import data from './data';
 
 const useStyles = makeStyles(() => ({
   root: {},
@@ -99,16 +32,16 @@ const useStyles = makeStyles(() => ({
   }
 }));
 
-const LatestOrders = ({ className, ...rest }) => {
+const HelpRequests = ({ className, ...rest }) => {
   const classes = useStyles();
-  const [orders] = useState(data);
+  const [tasks] = useState(data);
 
   return (
     <Card
       className={clsx(classes.root, className)}
       {...rest}
     >
-      <CardHeader title="Current Customers" />
+      <CardHeader title="Clients waiting for help" />
       <Divider />
       <PerfectScrollbar>
         <Box minWidth={800}>
@@ -125,7 +58,7 @@ const LatestOrders = ({ className, ...rest }) => {
                       active
                       direction="desc"
                     >
-                      Name
+                      Section
                     </TableSortLabel>
                   </Tooltip>
                 </TableCell>
@@ -138,36 +71,36 @@ const LatestOrders = ({ className, ...rest }) => {
                       active
                       direction="desc"
                     >
-                      Email
+                      Moment
                     </TableSortLabel>
                   </Tooltip>
                 </TableCell>
                 <TableCell>
-                  Status
+                  Client
                 </TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
-              {orders.map((order) => (
-                <TableRow
-                  hover
-                  key={order.id}
-                >
-                  <TableCell>
-                    {order.customer.name}
-                  </TableCell>
-                  <TableCell>
-                    {order.customer.email}
-                  </TableCell>
-                  <TableCell>
-                    <Chip
-                      color="primary"
-                      label={order.status}
-                      size="small"
-                    />
-                  </TableCell>
-                </TableRow>
-              ))}
+              {tasks.map((task) => {
+                if (task.status == "Pending") {
+                  return (
+                    <TableRow
+                      hover
+                      key={task.id}
+                    >
+                      <TableCell>
+                        {task.place}
+                      </TableCell>
+                      <TableCell>
+                        {moment(task.createdAt).format('DD/MM/YYYY, h:mm:ss')}
+                      </TableCell>
+                      <TableCell>
+                        {task.customer.name}
+                      </TableCell>
+                    </TableRow>
+                  )
+                }
+              })}
             </TableBody>
           </Table>
         </Box>
@@ -183,7 +116,7 @@ const LatestOrders = ({ className, ...rest }) => {
           size="small"
           variant="text"
           component={RouterLink}
-          to="/admin/customers/"
+          to="/employee/help/"
         >
           View all
         </Button>
@@ -192,8 +125,8 @@ const LatestOrders = ({ className, ...rest }) => {
   );
 };
 
-LatestOrders.propTypes = {
+HelpRequests.propTypes = {
   className: PropTypes.string
 };
 
-export default LatestOrders;
+export default HelpRequests;

@@ -7,11 +7,11 @@ import {
 import Page from 'src/components/Page';
 import CostumersInLine from './CostumersInLine';
 import LatestProducts from './LatestProducts';
-import CurrentCostumers from './CurrentCostumers';
+import HelpRequests from './HelpRequests';
 import CostumersInStore from './CostumersInStore';
 import TotalCustomers from './TotalCustomers';
-import TotalProfit from './TotalProfit';
-import SalesByType from './SalesByType';
+import RequestsAttended from './RequestsAttended';
+import RequestsStats from './RequestsStats';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -72,7 +72,7 @@ const Dashboard = () => {
             xl={3}
             xs={12}
           >
-            <TotalProfit />
+            <RequestsAttended />
           </Grid>
           <Grid
             item
@@ -81,7 +81,7 @@ const Dashboard = () => {
             xl={9}
             xs={12}
           >
-            <CurrentCostumers />
+            <HelpRequests />
           </Grid>
           <Grid
             item
@@ -90,7 +90,7 @@ const Dashboard = () => {
             xl={3}
             xs={12}
           >
-            <SalesByType />
+            <RequestsStats />
           </Grid>
           <Grid
             item

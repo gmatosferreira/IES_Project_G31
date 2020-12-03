@@ -23,14 +23,14 @@ const useStyles = makeStyles(() => ({
   }
 }));
 
-const SalesByType = ({ className, ...rest }) => {
+const RequestsStats = ({ className, ...rest }) => {
   const classes = useStyles();
   const theme = useTheme();
 
   const data = {
     datasets: [
       {
-        data: [63, 15, 22],
+        data: [2, 7, 91],
         backgroundColor: [
           colors.indigo[500],
           colors.red[600],
@@ -41,7 +41,7 @@ const SalesByType = ({ className, ...rest }) => {
         hoverBorderColor: colors.common.white
       }
     ],
-    labels: ['Dairy', 'Technology', 'Vegetables']
+    labels: ['Costumer Left', 'Pending', 'Resolved']
   };
 
   const options = {
@@ -68,18 +68,18 @@ const SalesByType = ({ className, ...rest }) => {
 
   const devices = [
     {
-      title: 'Drinks',
-      value: 63,
+      title: 'Costumer Left',
+      value: 2,
       color: colors.indigo[500]
     },
     {
-      title: 'Technology',
-      value: 15,
+      title: 'Pending',
+      value: 7,
       color: colors.red[600]
     },
     {
-      title: 'Dairy',
-      value: 23,
+      title: 'Resolved',
+      value: 91,
       color: colors.orange[600]
     }
   ];
@@ -89,7 +89,7 @@ const SalesByType = ({ className, ...rest }) => {
       className={clsx(classes.root, className)}
       {...rest}
     >
-      <CardHeader title="Sales by Product Type" />
+      <CardHeader title="Help requests stats" />
       <Divider />
       <CardContent>
         <Box
@@ -137,8 +137,8 @@ const SalesByType = ({ className, ...rest }) => {
   );
 };
 
-SalesByType.propTypes = {
+RequestsStats.propTypes = {
   className: PropTypes.string
 };
 
-export default SalesByType;
+export default RequestsStats;
