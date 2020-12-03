@@ -14,7 +14,8 @@ import {
   ListItemIcon,
   Typography,
   makeStyles,
-  MenuList
+  MenuList,
+  Link
 } from '@material-ui/core';
 import NotificationsIcon from '@material-ui/icons/NotificationsOutlined';
 import AssignmentIcon from '@material-ui/icons/Assignment';
@@ -37,12 +38,14 @@ if (isAdmin) {
     {
       "update": "Low Stock on Milk",
       "timestamp": 1606905012000,
-      "icon": <ShoppingBasketIcon />
+      "icon": <ShoppingBasketIcon />,
+      "link": "/admin/products/"
     },
     {
       "update": "Store is Full",
       "timestamp": 1606905192000,
-      "icon": <ShoppingBasketIcon />
+      "icon": <ShoppingBasketIcon />,
+      "link": "/admin/customers/in_store"
     }
   ]
 } else {
@@ -50,7 +53,8 @@ if (isAdmin) {
     {
       "update": "Help needed by João",
       "timestamp": 1606905312000,
-      "icon": <AssignmentIcon />
+      "icon": <AssignmentIcon />,
+      "link": "/employee/help"
     }
   ]
 }
@@ -112,7 +116,9 @@ const TopBar = ({
           >
             <MenuList>
               {notifications.map((n) => (
-                <MenuItem onClick={handleClose}>
+                <MenuItem
+                  onClick={() => { window.location.href = n.link; }}
+                >
                   <ListItemIcon fontSize="small">
                     {n.icon}
                   </ListItemIcon>
@@ -121,7 +127,7 @@ const TopBar = ({
               ))}
               {
                 admin &&
-                <MenuItem onClick={() => {window.location.href="/admin/notifications/"}} style={{ color: "blue", fontSize: "small", align: "center" }}>
+                <MenuItem onClick={() => { window.location.href = "/admin/notifications/" }} style={{ color: "blue", fontSize: "small", align: "center" }}>
                   See All Notifications
                 </MenuItem>
               }
