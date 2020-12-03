@@ -29,29 +29,40 @@ const useStyles = makeStyles(() => ({
   }
 }));
 
+let notificationsList = [];
+const isAdmin = window.location.href.indexOf("admin") > 0;
+
+if (isAdmin) {
+  notificationsList = [
+    {
+      "update": "Low Stock on Milk",
+      "timestamp": 1606905012000,
+      "icon": <ShoppingBasketIcon />
+    },
+    {
+      "update": "Store is Full",
+      "timestamp": 1606905192000,
+      "icon": <ShoppingBasketIcon />
+    }
+  ]
+} else {
+  notificationsList = [
+    {
+      "update": "Help needed by João",
+      "timestamp": 1606905312000,
+      "icon": <AssignmentIcon />
+    }
+  ]
+}
+
 const TopBar = ({
   className,
   onMobileNavOpen,
   ...rest
 }) => {
   const classes = useStyles();
-  const [notifications] = useState([
-    {
-      "update":"Low Stock on Milk",
-      "timestamp":1606905012000,
-      "icon": <ShoppingBasketIcon/>
-      },
-      {
-      "update":"Store is Full",
-      "timestamp":1606905192000,
-      "icon": <ShoppingBasketIcon/>
-      },
-      {
-      "update":"Help needed by João",
-      "timestamp":1606905312000,
-      "icon": <AssignmentIcon/>
-      }
-  ]);
+  const [notifications] = useState(notificationsList);
+  const [admin] = useState(isAdmin);
 
   const [anchorEl, setAnchorEl] = React.useState(null);
 
@@ -65,7 +76,7 @@ const TopBar = ({
 
   const openTasks = (event) => {
     handleClose();
-    
+
   };
 
   return (
@@ -80,39 +91,42 @@ const TopBar = ({
   </RouterLink>*/}
         <Box flexGrow={1} />
         <Hidden mdDown>
-            <IconButton color="inherit" onClick={handleClick}>
-              <Badge
-                badgeContent={notifications.length}
-                color="error"
-              >
-              <NotificationsIcon />
-              </Badge>
-            </IconButton>
-            <IconButton color="inherit">
-              <InputIcon onClick={() => {window.location.href="/"}} />
-            </IconButton>
-            <Menu
-              id="simple-menu"
-              anchorEl={anchorEl}
-              keepMounted
-              open={Boolean(anchorEl)}
-              onClose={handleClose}
-              menuAlign={{ lg: 'right' }}
+          <IconButton color="inherit" onClick={handleClick}>
+            <Badge
+              badgeContent={notifications.length}
+              color="error"
             >
-              <MenuList>
-                {notifications.map((n) => (
-                  <MenuItem onClick={handleClose}>
+              <NotificationsIcon />
+            </Badge>
+          </IconButton>
+          <IconButton color="inherit">
+            <InputIcon onClick={() => { window.location.href = "/" }} />
+          </IconButton>
+          <Menu
+            id="simple-menu"
+            anchorEl={anchorEl}
+            keepMounted
+            open={Boolean(anchorEl)}
+            onClose={handleClose}
+            menuAlign={{ lg: 'right' }}
+          >
+            <MenuList>
+              {notifications.map((n) => (
+                <MenuItem onClick={handleClose}>
                   <ListItemIcon fontSize="small">
                     {n.icon}
                   </ListItemIcon>
                   <Typography>{n.update}</Typography>
-                  </MenuItem>
-                ))}
-                <MenuItem onClick={openTasks} style={{color:"blue", fontSize:"small", align: "center"}}>
+                </MenuItem>
+              ))}
+              {
+                admin &&
+                <MenuItem onClick={() => {window.location.href="/admin/notifications/"}} style={{ color: "blue", fontSize: "small", align: "center" }}>
                   See All Notifications
                 </MenuItem>
-              </MenuList>
-            </Menu>
+              }
+            </MenuList>
+          </Menu>
         </Hidden>
         <Hidden lgUp>
           <IconButton
@@ -125,7 +139,7 @@ const TopBar = ({
     </AppBar>
   );
 };
-  
+
 
 TopBar.propTypes = {
   className: PropTypes.string,
