@@ -5,10 +5,12 @@
 <p align="center">
  System for monitoring clients and products at an automated self-service store. 
 </p>
+---
 
+This project was developed in the context of [Introduction to Software Engineering](https://www.ua.pt/en/uc/12288) curricular unit, part of the Computer Science Bachelor at [Aveiro University](https://www.ua.pt/). It was lectured by [José Oliveira](https://www.ua.pt/pt/p/10309676) during the 2020/2021school year.
 
-<hr>
 Each student was graded a different note. Chech [Authors](#Authors) for more information.
+
 
 
 
